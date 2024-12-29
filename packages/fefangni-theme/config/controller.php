@@ -3,10 +3,18 @@
 return [
 	'frontend' => [
 		'catalog' => [
-			'levels-always' => 4, // show always four category levels for megamenu
-			'levels-only' => 4, // don't load more then four category levels for megamenu
-		]
+			'cache' => [
+				'enable' => true,
+			],
+		],
 	],
 	'jobs' => [
+		'catalog' => [
+			'export' => [
+				'sitemap' => [
+					'location' => 'public/sitemap-catalog-%d.xml.gz',
+				],
+			],
+		],
 	],
 ];

@@ -274,3 +274,9 @@ is available for free.
 * [Issue tracker](https://github.com/aimeos/aimeos/issues)
 * [Composer packages](https://packagist.org/packages/aimeos/aimeos)
 * [Source code](https://github.com/aimeos/aimeos)
+
+## Active theme
+
+```
+php artisan aimeos:setup --option=locale/site:fefangni-theme
+```

@@ -1,8 +1,0 @@
-tmp/
-vendor/
-config/
-confdoc.ser
-composer.lock
-coveralls.json
-.phpunit.result.cache
-

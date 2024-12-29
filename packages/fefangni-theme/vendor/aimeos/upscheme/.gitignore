@@ -1,6 +1,0 @@
-/vendor/
-/tests/tmp/
-coverage.xml
-composer.lock
-.phpunit.result.cache
-*.test

@@ -3,6 +3,8 @@
 $multishop = $multiroute = [];
 $prefix = env('SHOP_MULTILOCALE') ? '{locale}/' : '';
 
+// dd(rtrim(env('ASSET_URL', PHP_SAPI == 'cli' ? env('APP_URL') : ''), '/'));
+
 if (env('SHOP_MULTISHOP')) {
 	$multishop = ['routes' => [
 		'admin' => ['prefix' => 'admin', 'middleware' => ['web']],
@@ -11,7 +13,7 @@ if (env('SHOP_MULTISHOP')) {
 		'jsonadm' => ['prefix' => 'admin/{site}/jsonadm', 'middleware' => ['web', 'auth', 'verified']],
 		'jsonapi' => ['prefix' => '{site}/jsonapi', 'middleware' => ['web', 'api']],
 		'account' => ['prefix' => $prefix . '{site}/profile', 'middleware' => ['web', 'auth', 'verified']],
-		'default' => ['prefix' => $prefix . '{site}/shop', 'middleware' => ['web']],
+		// 'default' => ['prefix' => $prefix . '{site}/shop', 'middleware' => ['web']],
 		'basket' => ['prefix' => $prefix . '{site}/shop', 'middleware' => ['web']],
 		'checkout' => ['prefix' => $prefix . '{site}/shop', 'middleware' => ['web']],
 		'confirm' => ['prefix' => $prefix . '{site}/shop', 'middleware' => ['web']],
@@ -53,6 +55,9 @@ if (env('SHOP_MULTIROUTE')) {
 							'target' => 'aimeos_resolve',
 						],
 					],
+					'filter' => [
+            'subparts' => ['search', 'tree', 'attribute'],
+          ],
 				]
 			]
 		]
@@ -105,7 +110,7 @@ return array_replace_recursive($multiroute, $multishop + [
 		'checkout-update' => ['checkout/update'],
 		'supplier-detail' => ['locale/select', 'basket/mini', 'catalog/tree', 'catalog/search', 'supplier/detail', 'catalog/lists'],
 		'cms' => ['basket/mini', 'catalog/tree', 'cms/page'],
-		'announcement' => ['locale/select']
+		'exemple' =>  ['basket/mini', 'catalog/tree', 'cms/page']
 	],
 
 	'resource' => [
@@ -201,14 +206,15 @@ return array_replace_recursive($multiroute, $multishop + [
 			],
 			'common' => [
 				'cache' => [
-					// 'force' => true // enforce caching for logged in users
+					'force' => true // enforce caching for logged in users
 				],
+
 			],
 			'catalog' => [
 				'lists' => [
 					'basket-add' => true, // shows add to basket in list views
-					// 'infinite-scroll' => true, // load more products in list view
-					// 'size' => 48, // number of products per page
+					'infinite-scroll' => true, // load more products in list view
+					'size' => 48, // number of products per page
 				],
 				'selection' => [
 					'type' => [ // how variant attributes are displayed
@@ -252,20 +258,49 @@ return array_replace_recursive($multiroute, $multishop + [
 
 	'mshop' => [
 		'locale' => [
-			'site' => env('AIMEOS_SITE', 'default'),
-			// 'site' => 'fefangni-theme', // used instead of "default"
+			'site' => env('AIMEOS_SITE', 'fefangni-theme'),
 		]
 	],
 
 
-	'command' => [],
+	'command' => [
+		'madmin' => [
+			'log' => [
+				'manager' => [
+					'loglevel' => 7
+				],
+			],
+    ],
+	],
 
-	'frontend' => [],
+	'frontend' => [
+		'madmin' => [
+			'log' => [
+				'manager' => [
+					'loglevel' => 4
+				],
+			],
+    ],
+	],
 
-	'backend' => [],
+	'backend' => [
+		'madmin' => [
+			'log' => [
+				'manager' => [
+					'loglevel' => 5
+				],
+			],
+    ],
+	],
 
-	'shop' => [
-		'theme' => 'fefangni-theme', // Set the theme here
-	]
-
+	'client' => [
+		'html' => [
+			'common' => [
+				'template' => [
+					'baseurl' => 'fefangni-theme'
+				]
+			]
+		]
+	],
+	'template' => 'fefangni-theme'
 ]);

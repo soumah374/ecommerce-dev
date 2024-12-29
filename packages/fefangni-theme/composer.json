@@ -1,7 +1,11 @@
 {
 	"name": "aimeos-themes/fefangni-theme",
-	"description": "Aimeos fefangni-theme theme",
-	"keywords": ["aimeos", "extension"],
+	"description": "Thème Fefangni pour Aimeos",
+	"keywords": [
+		"aimeos",
+		"extension",
+		"theme"
+	],
 	"type": "aimeos-extension",
 	"license": "LGPL-3.0",
 	"prefer-stable": true,
@@ -12,7 +16,8 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Aimeos\\": "src"
+			"Aimeos\\": "src",
+			"Aimeos\\fefangnitheme\\": "src/fefangnitheme"
 		},
 		"classmap": [
 			"src",
@@ -27,11 +32,11 @@
 			"tests"
 		]
 	},
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Aimeos\\fefangnitheme\\ExtensionServiceProvider"
-            ]
-        }
-    }
+	"extra": {
+		"laravel": {
+			"providers": [
+				"Aimeos\\fefangnitheme\\ExtensionServiceProvider"
+			]
+		}
+	}
 }

@@ -1,3 +1,6 @@
 /*
  * Custom fefangni-theme CSS
  */
+.catalog-detail-basic .name {
+  font-size: 125%
+}

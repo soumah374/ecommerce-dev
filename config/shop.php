@@ -195,12 +195,12 @@ return array_replace_recursive( $multiroute, $multishop + [
 		'html' => [
 			'basket' => [
 				'cache' => [
-					// 'enable' => false, // Disable basket content caching for development
+					'enable' => false, // Disable basket content caching for development
 				],
 			],
 			'common' => [
 				'cache' => [
-					// 'force' => true // enforce caching for logged in users
+					'force' => true // enforce caching for logged in users
 				],
 			],
 			'catalog' => [
